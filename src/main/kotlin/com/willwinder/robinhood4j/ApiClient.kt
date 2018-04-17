@@ -9,7 +9,6 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -46,7 +45,7 @@ class ApiClient(
       return Retrofit.Builder()
           .addConverterFactory(GsonConverterFactory.create())
           .addConverterFactory(EnumRetrofitConverterFactory())
-          .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+          //.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
           .baseUrl(url)
           .client(clients[type])
           .build()

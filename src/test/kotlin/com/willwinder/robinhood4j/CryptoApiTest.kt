@@ -5,10 +5,12 @@ import com.willwinder.robinhood4j.model.OrderType
 import com.willwinder.robinhood4j.model.TimeInForce
 import com.willwinder.robinhood4j.utils.RobinhoodTestParent
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import retrofit2.Call
 import java.util.*
 
+@Disabled
 class CryptoApiTest : RobinhoodTestParent() {
   private fun <T> call(call: Call<T>) {
     val response = call.execute()

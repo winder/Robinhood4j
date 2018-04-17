@@ -2,6 +2,42 @@ Robinhood API Client Library.
 
 This library leverages Retrofit2, Gson and Kotlin to wrap the Unofficial Robinhood REST API.
 
+Initial implementation for the Cryptocurrency endpoints is available. If there is interest the remaining endpoints could also be supported.
+
+# Usage
+
+Artifacts are published on maven:
+```xml
+    <dependency>
+      <groupId>com.willwinder.robinhood4j</groupId>
+      <artifactId>robinhood4j</artifactId>
+      <version>0.1</version>
+    </dependency>
+```
+
+API access is done through through the `ApiClient` object:
+```java
+  ApiClient client = new ApiClient(<login>, <password>, <cached login-token or null>);
+  Call<Results<CryptoQuote>> call = client.getCryptoQuotes().getQuoteSymbols("ETHUSD");
+  Response<Results<CryptoQuote>> response = call.execute();
+  Results<CryptoQuote> result = response.body();
+```
+
+Example Kotlin code to make a limit purchase of 0.25 etherium at trading value of $600/ETH:
+```kotlin
+  val quote = apiClient.cryptoQuotes.getQuote("ETHUSD").execute().body()!!
+  val pair = apiClient.crypto.getCurrencyPair(quote.id).execute().body()!!
+
+  apiClient.crypto.makeOrder(RobinhoodCryptoApi.OrderParameters(
+      OrderSide.SELL,
+      pair.id,
+      600.0,
+      0.25,
+      UUID.randomUUID().toString(),
+      TimeInForce.GTC,
+      OrderType.LIMIT
+  ))
+ ```
 
 # Unit Tests
 Due to the nature of this API unit tests cannot be run without configuring your

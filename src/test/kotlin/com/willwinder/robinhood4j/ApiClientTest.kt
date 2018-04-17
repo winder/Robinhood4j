@@ -1,8 +1,10 @@
 package com.willwinder.robinhood4j
 
 import com.willwinder.robinhood4j.utils.RobinhoodTestParent
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
+@Disabled
 class ApiClientTest : RobinhoodTestParent() {
   @Test
   fun test() {

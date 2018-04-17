@@ -3,11 +3,13 @@ package com.willwinder.robinhood4j.utils
 import com.willwinder.robinhood4j.ApiClient
 import org.apache.commons.codec.binary.Base64
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 
 
+@Disabled
 open class RobinhoodTestParent {
   val apiClient: ApiClient
 
