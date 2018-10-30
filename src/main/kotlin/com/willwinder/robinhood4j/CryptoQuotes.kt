@@ -13,6 +13,11 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.*
 
+data class Results<out T>(
+    val next: String?,
+    val previous: String?,
+    val results: List<T>
+)
 
 data class CryptoQuote (
     val ask_price: Double,

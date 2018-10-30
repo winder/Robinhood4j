@@ -25,5 +25,16 @@ class CryptoQuotesTest : RobinhoodTestParent() {
         bounds = Bounds.TWENTY_FOUR_SEVEN,
         interval = Intervals.DAY
     ))
+
+  val response = apiClient.cryptoQuotes.getHistoricals(
+      idPair = "3d961844-d360-45fc-989b-f6fca761d511",
+      spans = Spans.DAY,
+      bounds = Bounds.TWENTY_FOUR_SEVEN,
+      interval = Intervals.DAY
+  ).execute()
+
+  for(data in response!!.body()!!.data_points) {
+    println(data.high_price)
+  }
   }
 }
